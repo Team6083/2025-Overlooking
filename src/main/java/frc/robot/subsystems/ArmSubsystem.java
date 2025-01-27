@@ -4,11 +4,9 @@
 
 package frc.robot.subsystems;
 
-import java.beans.Encoder;
-
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ArmConstant;
 
@@ -25,8 +23,8 @@ public class ArmSubsystem extends SubsystemBase {
 	public ArmSubsystem() {
 		stretchMotor = new VictorSP(ArmConstant.kArmStretchMotorChannel);
 		rotateMotor = new VictorSP(ArmConstant.kArmRotateMotorChannel);
-		armStretchEncoder = new Encoder();
-		armRotatEncoder = new Encoder();
+		armStretchEncoder = new Encoder(ArmConstant.kArmStretchEncoderChannelA, ArmConstant.kArmStretchEncoderChannelB);
+		armRotatEncoder = new Encoder(ArmConstant.kArmRotateEncoderChannelA, ArmConstant.kArmRotateEncoderChannelB);
 		armStretchController = new PIDController(0, 0, 0);
 		armRotaController = new PIDController(0, 0, 0);
 	}
@@ -40,7 +38,7 @@ public class ArmSubsystem extends SubsystemBase {
 	}
 
 	private void armStretch(double setpoint) {
-		double measurement = 0.0;
+		double measurement = armStretchEncoder.get();
 		setStretchVoltage(armStretchController.calculate(measurement, setpoint));
 	}
 
@@ -49,7 +47,7 @@ public class ArmSubsystem extends SubsystemBase {
 	}
 
 	private void armRotated(double setpoint) {
-		double measurement = 0.0;
+		double measurement = armRotatEncoder.get();
 		setRotateVoltage(armRotaController.calculate(measurement, setpoint));
 	}
 
