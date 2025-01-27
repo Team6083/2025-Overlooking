@@ -4,14 +4,17 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.Rev2mDistanceSensor.Port;
+
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.units.Measure;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.ArmConstant;
 import frc.robot.Constants.BotBShooterConstant;
+import frc.robot.Constants.CoralShooterConstant;
+import frc.robot.lib.DistanceSensor;
+import frc.robot.lib.DistanceSensorInterface;
 
 public class BotBShooterSubsystem extends SubsystemBase {
     /** Creates a new ArmSubsystem. */
@@ -21,6 +24,7 @@ public class BotBShooterSubsystem extends SubsystemBase {
     private VictorSP shooterRotateMotor;
     private PIDController rotateController;
     private Encoder rotatEncoder;
+    private DistanceSensorInterface distanceSensor;
 
     public BotBShooterSubsystem() {
         shooterUpMotor = new VictorSP(BotBShooterConstant.kBotBShooterUpMotorChannel);
@@ -29,6 +33,7 @@ public class BotBShooterSubsystem extends SubsystemBase {
         rotatEncoder = new Encoder
             (BotBShooterConstant.kBotBshooterRotateEncoderChannelA,BotBShooterConstant.kBotBshooterRotateEncoderChannelB);
         rotateController = new PIDController(0, 0, 0);
+        distanceSensor = new DistanceSensor(Port.kOnboard);
     }
 
     private void setShooterMotorVoltage(double voltage) {
@@ -53,9 +58,17 @@ public class BotBShooterSubsystem extends SubsystemBase {
         setShooterMotorVoltage(BotBShooterConstant.kBotBShooterOutVoltage);
     }
 
-    private void shooterStop() {
+    public void shooterStop() {
         setShooterMotorVoltage(0);
     }
+
+     public boolean isGetCoral() {
+    if (distanceSensor.isGetTarget()) { // 碰到目標
+      return distanceSensor.getTargetDistance() <= CoralShooterConstant.kDistanceRange
+          && distanceSensor.getTargetDistance() > 0;
+    }
+    return false;
+  }
 
     public Command shooterInCmd() {
         Command cmd = runEnd(this::shooterIn, this::shooterStop);

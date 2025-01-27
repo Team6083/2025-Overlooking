@@ -25,8 +25,8 @@ public class ArmSubsystem extends SubsystemBase {
 		rotateMotor = new VictorSP(ArmConstant.kArmRotateMotorChannel);
 		armStretchEncoder = new Encoder(ArmConstant.kArmStretchEncoderChannelA, ArmConstant.kArmStretchEncoderChannelB);
 		armRotatEncoder = new Encoder(ArmConstant.kArmRotateEncoderChannelA, ArmConstant.kArmRotateEncoderChannelB);
-		armStretchController = new PIDController(0, 0, 0);
-		armRotaController = new PIDController(0, 0, 0);
+		armStretchController = new PIDController(ArmConstant.kSp, ArmConstant.kSi, ArmConstant.kSd);
+		armRotaController = new PIDController(ArmConstant.kRp, ArmConstant.kRi, ArmConstant.kRd);
 	}
 
 	private void setStretchVoltage(double voltage) {
@@ -42,7 +42,7 @@ public class ArmSubsystem extends SubsystemBase {
 		setStretchVoltage(armStretchController.calculate(measurement, setpoint));
 	}
 
-	private void armStretchStop() {
+	public void armStretchStop() {
 		setStretchVoltage(0);
 	}
 
@@ -51,7 +51,7 @@ public class ArmSubsystem extends SubsystemBase {
 		setRotateVoltage(armRotaController.calculate(measurement, setpoint));
 	}
 
-	private void armRotateStop() {
+	public void armRotateStop() {
 		setRotateVoltage(0);
 	}
 
