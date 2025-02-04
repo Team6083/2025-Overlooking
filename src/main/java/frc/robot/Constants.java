@@ -35,7 +35,7 @@ public class Constants {
   public static final class ArmConstant {
     public static final int kArmStretchMotorChannel = 0;
     public static final int kArmRotateMotorChannel = 0;
-    public static final int kArmStretchMotorVolatge = 4;
+    public static final int kArmStretchMotorVoltage = 4;
     public static final int kArmRotateMotorVoltage = 4;
     public static final int kArmStretchEncoderChannelA = 0;
     public static final int kArmStretchEncoderChannelB = 0;
@@ -61,8 +61,8 @@ public class Constants {
     public static final int kBotBShooterUpMotorChannel = 0;
     public static final int kBotBShooterDownMotorChannel = 0;
     public static final int kBotBShooterRotateMotorChannel = 0;
-    public static final int kBotBshooterRotateEncoderChannelA = 1;
-    public static final int kBotBshooterRotateEncoderChannelB = 1;
+    public static final int kBotBShooterRotateEncoderChannelA = 1;
+    public static final int kBotBShooterRotateEncoderChannelB = 1;
     public static final double kBotBShooterInVoltage = 4;
     public static final double kBotBShooterOutVoltage = 4;
     public static final int kp = 0;
