@@ -23,15 +23,15 @@ public class BotBShooterSubsystem extends SubsystemBase {
     private VictorSP shooterDownMotor;
     private VictorSP shooterRotateMotor;
     private PIDController rotateController;
-    private Encoder rotatEncoder;
+    private Encoder rotateEncoder;
     private DistanceSensorInterface distanceSensor;
 
     public BotBShooterSubsystem() {
         shooterUpMotor = new VictorSP(BotBShooterConstant.kBotBShooterUpMotorChannel);
         shooterDownMotor = new VictorSP(BotBShooterConstant.kBotBShooterDownMotorChannel);
         shooterRotateMotor = new VictorSP(BotBShooterConstant.kBotBShooterRotateMotorChannel);
-        rotatEncoder = new Encoder
-            (BotBShooterConstant.kBotBshooterRotateEncoderChannelA,BotBShooterConstant.kBotBshooterRotateEncoderChannelB);
+        rotateEncoder = new Encoder
+            (BotBShooterConstant.kBotBShooterRotateEncoderChannelA,BotBShooterConstant.kBotBShooterRotateEncoderChannelB);
         rotateController = new PIDController(0, 0, 0);
         distanceSensor = new DistanceSensor(Port.kOnboard);
     }
@@ -46,7 +46,7 @@ public class BotBShooterSubsystem extends SubsystemBase {
     }
 
     private void shooterRotate(double setpoint) {
-        double measurement = rotatEncoder.get();
+        double measurement = rotateEncoder.get();
         setRotateVoltage(rotateController.calculate(measurement, setpoint));
     }
 
