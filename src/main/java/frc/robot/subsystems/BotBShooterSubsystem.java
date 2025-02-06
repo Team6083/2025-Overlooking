@@ -45,7 +45,7 @@ public class BotBShooterSubsystem extends SubsystemBase {
         shooterRotateMotor.setVoltage(voltage);
     }
 
-    private void shooterRotate(double setpoint) {
+    public void shooterRotate(double setpoint) {
         double measurement = rotateEncoder.get();
         setRotateVoltage(rotateController.calculate(measurement, setpoint));
     }
