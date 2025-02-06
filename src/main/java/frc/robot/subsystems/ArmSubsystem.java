@@ -37,7 +37,7 @@ public class ArmSubsystem extends SubsystemBase {
 		rotateMotor.setVoltage(voltage);
 	}
 
-	private void armStretch(double setpoint) {
+	public void armStretch(double setpoint) {
 		double measurement = armStretchEncoder.get();
 		setStretchVoltage(armStretchController.calculate(measurement, setpoint));
 	}
@@ -46,7 +46,7 @@ public class ArmSubsystem extends SubsystemBase {
 		setStretchVoltage(0);
 	}
 
-	private void armRotated(double setpoint) {
+	public void armRotated(double setpoint) {
 		double measurement = armRotateEncoder.get();
 		setRotateVoltage(armRotaController.calculate(measurement, setpoint));
 	}
