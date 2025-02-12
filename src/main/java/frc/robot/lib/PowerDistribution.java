@@ -46,8 +46,7 @@ public class PowerDistribution {
   }
 
   public double climberCurrent() {
-    double current = powerDistribution
-        .getCurrent(PowerDistributionConstant.kClimberMotorCurrentChannel);
+    double current = powerDistribution.getCurrent(PowerDistributionConstant.kClimberMotorCurrentChannel);
     SmartDashboard.putNumber("climberCurrent", current);
     return current;
   }
