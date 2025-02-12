@@ -1,4 +1,4 @@
-package frc.robot.Vision;
+package frc.robot.vision;
 
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
