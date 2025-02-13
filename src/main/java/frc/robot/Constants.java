@@ -120,6 +120,40 @@ public class Constants {
     public static final LinearVelocity kMaxSpeed = MetersPerSecond.of(4.0);
   }
 
+  public static final class AlgaeIntakeConstant {
+    // AlgaeMotor Channel
+    public static final int kIntakeMotorChannel = 2;
+    public static final int kIntakeRotateMotorChannal = 1;
+
+    // Algae Encoder Channel
+    public static final int kalgaeEncoderChannelA = 3;
+    public static final int kalgaeEncoderChannelB = 4;
+
+    // Algae 吸入、吐出的電壓
+    public static final double kIntakeVoltage = 6.0;
+    public static final double kReIntakeVoltage = 3.0;
+
+    // AlgaeRotate 的電壓
+    public static final double kUpIntakeRotateVoltage = 12;
+    public static final double kDownIntakeRotateVoltage = -12;
+
+    // Algae Rotate&Front PID
+    public static final double rotMotorPIDkP = 0.8;
+    public static final double rotMotorPIDkI = 0;
+    public static final double rotMotorPIDkD = 0;
+    public static final double frontMotorPIDkP = 0.8;
+    public static final double frontMotorPIDkI = 0;
+    public static final double frontMotorPIDkD = 0;
+
+    // Algae setpoint
+    public static final int krotateIntakeSetpoint = 130;
+    public static final int kfrontIntakeSetpoint = 30;
+
+    // Algae Inverted
+    public static final Boolean kIntakeMotorInverted = false;
+    public static final Boolean krotateIntakeMotorInverted = false;
+  }
+
   public static final class SwerveControlConstant {
 
     // 變速的放大倍率
