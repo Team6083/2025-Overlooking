@@ -22,7 +22,6 @@ public class CoralShooterSubsystem extends SubsystemBase {
   private DistanceSensorInterface distanceSensor;
   private PowerDistribution powerDistribution;
 
-
   public CoralShooterSubsystem(PowerDistribution powerDistribution) {
     this.powerDistribution = powerDistribution;
     coralShooterLeftMotor = new VictorSPX(CoralShooterConstant.kShooterLeftMotorChannel);
@@ -37,7 +36,6 @@ public class CoralShooterSubsystem extends SubsystemBase {
     coralShooterLeftMotor.set(VictorSPXControlMode.PercentOutput, speed);
     coralShooterRightMotor.set(VictorSPXControlMode.PercentOutput, -speed);
   }
-
 
   public void coralShooterFastOn() { // Motor on Fast
     if (powerDistribution.isCoralShooterOverCurrent()) {

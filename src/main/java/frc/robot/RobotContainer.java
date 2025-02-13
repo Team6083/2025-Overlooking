@@ -31,7 +31,9 @@ public class RobotContainer {
     powerDistribution = new PowerDistribution();
     coralShooterSubsystem = new CoralShooterSubsystem(powerDistribution);
     swerveDrive = new SwerveDrive();
+
     mainController = new CommandXboxController(0);
+
     swerveJoystickCmd = new SwerveControlCmd(swerveDrive, mainController);
 
     intakeCommand = new SequentialCommandGroup(
@@ -42,6 +44,7 @@ public class RobotContainer {
     autChooser.setDefaultOption("DoNothing", Commands.none());
     SmartDashboard.putData("CoralShooterSubsystem", coralShooterSubsystem);
     SmartDashboard.putData("AutoChooser", autChooser);
+
     configureBindings();
   }
 
