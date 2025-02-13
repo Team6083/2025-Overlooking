@@ -46,29 +46,24 @@ public class SwerveControlCmd extends Command {
     // CHECKSTYLE.ON: LocalVariableName
 
     if (Math.abs(mainController.getLeftY()) > minJoystickInput) {
-      xSpeed = -xLimiter.calculate(mainController.getLeftY())
-          * drivebaseMaxSpeed * magnification;
-
+      xSpeed = -xLimiter.calculate(mainController.getLeftY()) * drivebaseMaxSpeed * magnification;
     } else {
       xSpeed = 0;
     }
-    if (Math.abs(mainController.getLeftX()) > minJoystickInput) {
-      ySpeed = -yLimiter.calculate(mainController.getLeftX())
-          * drivebaseMaxSpeed * magnification;
 
+    if (Math.abs(mainController.getLeftX()) > minJoystickInput) {
+      ySpeed = -yLimiter.calculate(mainController.getLeftX()) * drivebaseMaxSpeed * magnification;
     } else {
       ySpeed = 0;
     }
-    if (Math.abs(mainController.getRightX()) > minJoystickInput) {
-      rotSpeed = rotLimiter.calculate(mainController.getRightX())
-          * drivebaseMaxSpeed * 1.2;
 
+    if (Math.abs(mainController.getRightX()) > minJoystickInput) {
+      rotSpeed = rotLimiter.calculate(mainController.getRightX()) * drivebaseMaxSpeed * 1.2;
     } else {
       rotSpeed = 0;
     }
 
-    swerveDrive.drive(
-        xSpeed, ySpeed, rotSpeed, SwerveControlConstant.kFieldRelative);
+    swerveDrive.drive(xSpeed, ySpeed, rotSpeed, SwerveControlConstant.kFieldRelative);
   }
 
   // Called once the command ends or is interrupted.

@@ -52,8 +52,7 @@ public class PowerDistribution {
   }
 
   public double rampCurrent() {
-    double current = powerDistribution
-        .getCurrent(PowerDistributionConstant.kRampMotorCurrentChannel);
+    double current = powerDistribution.getCurrent(PowerDistributionConstant.kRampMotorCurrentChannel);
     SmartDashboard.putNumber("rampCurrent", current);
     return current;
   }
