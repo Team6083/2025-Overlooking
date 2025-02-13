@@ -2,6 +2,7 @@ package frc.robot;
 
 import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.Millimeters;
 
 import edu.wpi.first.units.measure.Distance;
 import edu.wpi.first.units.measure.LinearVelocity;
@@ -37,6 +38,24 @@ public class Constants {
     public static final double kAlgaeRotateMotorMaxCurrent = 40;
     public static final double kClimberMotorMaxCurrent = 40;
     public static final double kRampMotorMaxCurrent = 40;
+  }
+
+  public static final class ElevatorConstant {
+    public static final double kP = 0.0003;
+    public static final double kI = 0.0;
+    public static final double kD = 0.0;
+
+    public static final Distance kInitialHeight = Millimeters.of(0.0);
+    public static final Distance kLowestHeight = Millimeters.of(0.0);
+    public static final Distance kStartedOffset = Millimeters.of(0.0);
+    public static final Distance kSecFloor = Millimeters.of(500);
+    public static final Distance kTrdFloor = Millimeters.of(1000);
+    public static final Distance kTopFloor = Millimeters.of(1500);
+    public static final Distance kMaxHeight = Millimeters.of(2000);
+    public static final Distance kStepHeight = Millimeters.of(10);
+
+    public static final double kEncoderDistancePerPulse = 1.0 / 2048.0;
+
   }
 
   public static final class ModuleConstant {
@@ -137,5 +156,4 @@ public class Constants {
     // Field - true / Robot - false
     public static final Boolean kFieldRelative = true;
   }
-
 }
